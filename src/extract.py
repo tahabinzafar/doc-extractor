@@ -6,9 +6,8 @@ detected text to JSON. No field logic yet, just clean raw output you can
 process later.
 
 Usage:
-    python extract.py invoice.pdf
-    python extract.py scans/                 # whole folder
-    python extract.py statement.png -o results
+    python src/extract.py data/raw/ -o data/json
+    python src/extract.py data/raw/statement.png -o data/json
 """
 
 import argparse
@@ -128,7 +127,7 @@ def main():
         description="Dump all OCR text from images / PDFs to JSON."
     )
     parser.add_argument("input", help="An image, a PDF, or a folder of them.")
-    parser.add_argument("-o", "--out", default="output", help="Output folder (default: output).")
+    parser.add_argument("-o", "--out", default="data/json", help="Output folder (default: data/json).")
     parser.add_argument("--dpi", type=int, default=200, help="Render DPI for PDFs (default: 200).")
     args = parser.parse_args()
 
